@@ -19,7 +19,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   String dropdownValue = "PCR";
   bool isSwitched = false;
   DateTime currentDate = DateTime.now();
-  String? errorOthers=null;
+  String? errorOthers;
   TextEditingController otherController = TextEditingController();
 
   @override
@@ -27,7 +27,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("Details"),
+        title: const Text("Details"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,9 +36,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               onPressed: () {
                 DatePicker.showDatePicker(context, showTitleActions: true,
                     onChanged: (date) {
-                  print('change $date');
                 }, onConfirm: (date) {
-                  print('confirm $date');
                   setState(() {
                     currentDate = date;
                   });
@@ -46,16 +44,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
               },
               child: Text(
                 formatDate(currentDate),
-                style: TextStyle(color: Colors.blue),
+                style: const TextStyle(color: Colors.blue),
               )),
           Container(
             child: widget.qrCode.type != 'qrCode' ?Padding(
               padding: const EdgeInsets.all(18.0),
               child: ListTile(
                 leading: Text(widget.qrCode.type.toString()),
-                title: Container(
-                    child: Text(widget.qrCode.content.toString()),
-                ),
+                title: Text(widget.qrCode.content.toString()),
               ),
             ) :QrImage(
               data: widget.qrCode.content.toString(),
@@ -99,7 +95,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     controller: otherController,
                   ),
                 )
-              : SizedBox(
+              : const SizedBox(
                   width: 0.0,
                 ),
           dropdownValue == 'PCR'
@@ -108,13 +104,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       const EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
                   child: Row(
                     children: [
-                      Text("Covid positive"),
+                      const Text("Covid positive"),
                       Switch(
                         value: isSwitched,
                         onChanged: (value) {
                           setState(() {
                             isSwitched = value;
-                            print(isSwitched);
                           });
                         },
                         activeTrackColor: Colors.lightGreenAccent,
@@ -123,7 +118,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ],
                   ),
                 )
-              : SizedBox(
+              : const SizedBox(
                   width: 0.0,
                 ),
           ElevatedButton(
@@ -148,10 +143,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          MyHomePage(title: "Qr Code Scanner")),
+                          const MyHomePage(title: "Qr Code Scanner")),
                 );
               },
-              child: Text("Validate"))
+              child: const Text("Validate"))
         ],
       ),
     );

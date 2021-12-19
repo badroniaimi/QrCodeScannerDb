@@ -5,7 +5,6 @@ import 'package:db_qr_code/intances.dart';
 import 'package:db_qr_code/objectbox.g.dart';
 import 'package:db_qr_code/qr_code.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -20,7 +19,7 @@ class QrCodeScreen extends StatefulWidget {
 class _QrCodeScreenState extends State<QrCodeScreen> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
-  var lastScan;
+  var lastScan = null;
   QRViewController? controller;
 
   // In order to get hot reload to work we need to pause the camera if the platform
@@ -39,7 +38,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Qr Code Scanner"),
+        title: const Text("Qr Code Scanner"),
       ),
       body: Column(
         children: <Widget>[
@@ -55,13 +54,13 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
             child: Center(
               child: GestureDetector(
                 onTap: () async {
-                  FilePickerResult? result = await FilePicker.platform.pickFiles(
+                  FilePickerResult? result =
+                      await FilePicker.platform.pickFiles(
                     type: FileType.custom,
-                    allowedExtensions: ['jpg','png', 'pdf', 'doc'],
+                    allowedExtensions: ['jpg', 'png', 'pdf', 'doc'],
                   );
 
                   if (result != null) {
-                    print(result.files.single.path.toString());
                     File file = File(result.files.single.path.toString());
                     MyQrCode qrCode = MyQrCode(
                         content: result.files.single.path.toString(),
@@ -72,8 +71,8 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              DetailsScreen(qrCode: qrCode, callback: widget.callback)),
+                          builder: (context) => DetailsScreen(
+                              qrCode: qrCode, callback: widget.callback)),
                     );
                   } else {
                     // User canceled the picker
@@ -81,7 +80,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Icon(Icons.upload),
                     Text("Choisir un fichier")
                   ],
@@ -121,7 +120,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
           );
         } else {
           ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text("Key already exists")));
+              .showSnackBar(const SnackBar(content: Text("Key already exists")));
           setState(() {
             myData.qrCodes = myData.box.getAll();
           });

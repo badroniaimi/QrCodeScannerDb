@@ -1,6 +1,6 @@
-# db_qr_code
+# Qr-Code Scanner
 
-A new Flutter project.
+A new Flutter project using Qr-Code scanner and generator, as well as, object-box as database.
 
 ## Getting Started
 

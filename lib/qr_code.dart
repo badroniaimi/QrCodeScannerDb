@@ -11,7 +11,7 @@ class MyQrCode{
 
   bool? pcr;
 
-  @Property(type: PropertyType.date) // Store as int in milliseconds
+  @Property(type: PropertyType.date)
   DateTime date;
 
   MyQrCode({this.content, this.pcr,required this.date, this.type,required this.id});

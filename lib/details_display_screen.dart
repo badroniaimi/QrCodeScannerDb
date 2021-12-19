@@ -31,7 +31,7 @@ class _DetailsDisplayScreenState extends State<DetailsDisplayScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 formatDate(widget.qrCode.date),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -46,26 +46,26 @@ class _DetailsDisplayScreenState extends State<DetailsDisplayScreen> {
               padding: const EdgeInsets.all(20.0),
               child: Text(
                 widget.qrCode.content.toString(),
-                style: TextStyle(fontSize: 18.0),
+                style: const TextStyle(fontSize: 18.0),
               ),
             ),
             widget.qrCode.type == 'PCR'
                 ? (widget.qrCode.pcr == true
                     ? Container(
-                        child: Icon(
+                        child: const Icon(
                         Icons.verified,
                         color: Colors.green,
                         size: 50.0,
                       ))
-                    : Padding(
-                        padding: const EdgeInsets.all(10.0),
+                    : const Padding(
+                        padding: EdgeInsets.all(10.0),
                         child: Icon(
                           Icons.cancel,
                           color: Colors.red,
                           size: 50.0,
                         ),
                       ))
-                : SizedBox(
+                : const SizedBox(
                     width: 0,
                   )
           ],
@@ -83,7 +83,7 @@ class _DetailsDisplayScreenState extends State<DetailsDisplayScreen> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => MyHomePage(title: "Qr Code Scanner")),
+                builder: (context) => const MyHomePage(title: "Qr Code Scanner")),
           );
         },
         tooltip: 'remove',

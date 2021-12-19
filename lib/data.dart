@@ -8,14 +8,12 @@ class MyData {
   data() {}
 
   Future<void> initDb(Function callback) async {
-    this.qrCodes = <MyQrCode>[];
-    if (this.box == null) {
+    qrCodes = <MyQrCode>[];
+    if (box == null) {
       final store = await openStore();
-      this.box = store.box<MyQrCode>();
+      box = store.box<MyQrCode>();
     }
-    print("content");
-    print(this.box.getAll());
-    this.qrCodes?.addAll(this.box.getAll());
-    callback(this.qrCodes);
+    qrCodes?.addAll(box.getAll());
+    callback(qrCodes);
   }
 }

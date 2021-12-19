@@ -132,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     );
                   })
-              : CircularProgressIndicator()),
+              : const CircularProgressIndicator()),
       floatingActionButton: FloatingActionButton(
         onPressed: _addQrCode,
         tooltip: 'New QrCode',
