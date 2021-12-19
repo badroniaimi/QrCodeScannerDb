@@ -1,0 +1,58 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "2:7150627851134822972",
+      "lastPropertyId": "5:7361502613210851233",
+      "name": "MyQrCode",
+      "properties": [
+        {
+          "id": "1:4079110495124208999",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3221145886699280980",
+          "name": "content",
+          "type": 9
+        },
+        {
+          "id": "3:3260790833444664130",
+          "name": "type",
+          "type": 9
+        },
+        {
+          "id": "4:8775889634522824979",
+          "name": "pcr",
+          "type": 1
+        },
+        {
+          "id": "5:7361502613210851233",
+          "name": "date",
+          "type": 10
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:7150627851134822972",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [
+    5111790781576070086
+  ],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    8657485279984132429,
+    1522560610487272371,
+    3174553425115479790
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}
