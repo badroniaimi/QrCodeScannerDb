@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:db_qr_code/details_screen.dart';
@@ -7,6 +8,7 @@ import 'package:db_qr_code/qr_code.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_code_tools/qr_code_tools.dart';
 
 class QrCodeScreen extends StatefulWidget {
   final Function callback;
@@ -61,11 +63,21 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                   );
 
                   if (result != null) {
-                    File file = File(result.files.single.path.toString());
+                    String? code  = await QrCodeToolsPlugin.decodeFrom(result.files.single.path.toString()).
+                    onError((dynamic error, dynamic stackTrace) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(content: Text("No code found")));
+                      return '';
+                    });
+                    if(code == ''){
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(content: Text("No code found")));
+                      return;
+                    }
                     MyQrCode qrCode = MyQrCode(
-                        content: result.files.single.path.toString(),
+                        content: code,
                         date: DateTime.now(),
-                        type: result.files.single.extension,
+                        type: 'qrCode',
                         id: 0);
                     widget.callback(qrCode);
                     Navigator.pushReplacement(

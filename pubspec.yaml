@@ -30,6 +30,8 @@ dependencies:
   flutter:
     sdk: flutter
   qr_code_scanner: ^0.6.1
+  qr_code_tools: ^0.0.7
+  image_picker: ^0.8.4+4
   objectbox_flutter_libs: any
   flutter_datetime_picker:
     git:

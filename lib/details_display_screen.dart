@@ -46,7 +46,8 @@ class _DetailsDisplayScreenState extends State<DetailsDisplayScreen> {
               padding: const EdgeInsets.all(20.0),
               child: Text(
                 widget.qrCode.content.toString(),
-                style: const TextStyle(fontSize: 18.0),
+                style: const TextStyle(fontSize: 18.0,
+                overflow: TextOverflow.ellipsis),
               ),
             ),
             widget.qrCode.type == 'PCR'
@@ -74,10 +75,6 @@ class _DetailsDisplayScreenState extends State<DetailsDisplayScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
         onPressed: () async {
-          final query = myData.box
-              .query(MyQrCode_.content.equals(widget.qrCode.content.toString()))
-              .build();
-          final qrCodes = query.find();
           await myData.box.remove(widget.qrCode.id);
           widget.callBack(myData.box.getAll());
           Navigator.pushReplacement(

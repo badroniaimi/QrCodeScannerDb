@@ -33,15 +33,13 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(
         title: 'Qr Code Scanner',
-        isFirst: true,
       ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  final bool? isFirst;
-  const MyHomePage({Key? key, required this.title, this.isFirst})
+  const MyHomePage({Key? key, required this.title})
       : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -129,6 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           size: 50.0,
                         ),
                         title: Text(myData.qrCodes![index].type.toString()),
+                        subtitle: Text(formatDate(myData.qrCodes![index].date)),
                       ),
                     );
                   })
