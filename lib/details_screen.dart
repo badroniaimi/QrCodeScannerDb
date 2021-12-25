@@ -34,9 +34,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         children: [
           TextButton(
               onPressed: () {
-                DatePicker.showDatePicker(context, showTitleActions: true,
-                    onChanged: (date) {
-                }, onConfirm: (date) {
+                DatePicker.showDatePicker(context,
+                    showTitleActions: true,
+                    onChanged: (date) {}, onConfirm: (date) {
                   setState(() {
                     currentDate = date;
                   });
@@ -47,17 +47,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 style: const TextStyle(color: Colors.blue),
               )),
           Container(
-            child: widget.qrCode.type != 'qrCode' ?Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: ListTile(
-                leading: Text(widget.qrCode.type.toString()),
-                title: Text(widget.qrCode.content.toString()),
-              ),
-            ) :QrImage(
-              data: widget.qrCode.content.toString(),
-              version: QrVersions.auto,
-              size: 200.0,
-            ),
+            child: widget.qrCode.type != 'qrCode'
+                ? Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: ListTile(
+                      leading: Text(widget.qrCode.type.toString()),
+                      title: Text(widget.qrCode.content.toString()),
+                    ),
+                  )
+                : QrImage(
+                    data: widget.qrCode.content.toString(),
+                    version: QrVersions.auto,
+                    size: 200.0,
+                  ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
@@ -89,9 +91,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   padding:
                       const EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
                   child: TextField(
-                    decoration: InputDecoration(
-                      errorText: errorOthers
-                    ),
+                    decoration: InputDecoration(errorText: errorOthers),
                     controller: otherController,
                   ),
                 )
@@ -124,13 +124,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
           ElevatedButton(
               onPressed: () {
                 if (dropdownValue == 'Autre') {
-                  if(otherController.value.text.toString().isEmpty){
+                  if (otherController.value.text.toString().isEmpty) {
                     setState(() {
-                      errorOthers="Vous devez choisir un type!";
+                      errorOthers = "Vous devez choisir un type!";
                     });
                     return;
                   }
-                  errorOthers=null;
+                  errorOthers = null;
                   widget.qrCode.type = otherController.value.text.toString();
                 } else {
                   widget.qrCode.type = dropdownValue;

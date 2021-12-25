@@ -70,8 +70,6 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                       return '';
                     });
                     if(code == ''){
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(const SnackBar(content: Text("No code found")));
                       return;
                     }
                     MyQrCode qrCode = MyQrCode(
@@ -79,7 +77,6 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                         date: DateTime.now(),
                         type: 'qrCode',
                         id: 0);
-                    widget.callback(qrCode);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -123,7 +120,6 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
               date: DateTime.now(),
               type: 'qrCode',
               id: 0);
-          widget.callback(qrCode);
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -133,9 +129,6 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
         } else {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text("Key already exists")));
-          setState(() {
-            myData.qrCodes = myData.box.getAll();
-          });
         }
       }
     });

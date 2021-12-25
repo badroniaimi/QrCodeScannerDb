@@ -1,6 +1,5 @@
 import 'package:db_qr_code/intances.dart';
 import 'package:db_qr_code/main.dart';
-import 'package:db_qr_code/objectbox.g.dart';
 import 'package:db_qr_code/qr_code.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -46,8 +45,8 @@ class _DetailsDisplayScreenState extends State<DetailsDisplayScreen> {
               padding: const EdgeInsets.all(20.0),
               child: Text(
                 widget.qrCode.content.toString(),
-                style: const TextStyle(fontSize: 18.0,
-                overflow: TextOverflow.ellipsis),
+                style: const TextStyle(
+                    fontSize: 18.0, overflow: TextOverflow.ellipsis),
               ),
             ),
             widget.qrCode.type == 'PCR'
@@ -80,7 +79,8 @@ class _DetailsDisplayScreenState extends State<DetailsDisplayScreen> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => const MyHomePage(title: "Qr Code Scanner")),
+                builder: (context) =>
+                    const MyHomePage(title: "Qr Code Scanner")),
           );
         },
         tooltip: 'remove',
